@@ -7,6 +7,10 @@
     "types": []
   },
   "exclude": [
-    "**/*.spec.ts"
+    "src/test.ts",
+    "**/*.spec.ts",
+    "dist",
+    "app-builds",
+    "node_modules"
   ]
 }
