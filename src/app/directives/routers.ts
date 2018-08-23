@@ -1,9 +1,9 @@
 import {  Routes } from '@angular/router';
-import { HomeComponent } from '../components/home/home.component';
+import { RegisterComponent } from '../pages/register/register.component';
 
 
 // Declare your routes here
 export const appRoutes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent}
+    { path: '', redirectTo: 'register', pathMatch: 'full' },
+    { path: 'register', component: RegisterComponent}
  ];

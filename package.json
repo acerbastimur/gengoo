@@ -41,6 +41,7 @@
     "@types/gsap": "^1.19.2",
     "angularfire2": "^5.0.0-rc.11",
     "bootstrap": "^4.1.3",
+    "electron-store": "^2.0.0",
     "firebase": "^5.4.0",
     "gsap": "^2.0.1",
     "jquery": "^3.3.1",

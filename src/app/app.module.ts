@@ -17,8 +17,7 @@ import { ElectronService } from './providers/electron.service';
 import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { RouterModule } from '@angular/router';
+ import { RouterModule } from '@angular/router';
 
 
 // Firebase integration
@@ -27,7 +26,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import * as firebase from 'firebase';
-
+import { RegisterComponent } from './pages/register/register.component';
+ 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,8 +49,9 @@ firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    WebviewDirective
+    RegisterComponent,
+    WebviewDirective,
+     
   ],
   imports: [
     BrowserModule,
