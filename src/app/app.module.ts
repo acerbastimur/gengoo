@@ -3,11 +3,11 @@ import 'reflect-metadata';
 import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { appRoutes } from './directives/routers';
+ import { appRoutes } from './directives/routers';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+ 
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -19,7 +19,7 @@ import { WebviewDirective } from './directives/webview.directive';
 import { AppComponent } from './app.component';
  import { RouterModule } from '@angular/router';
 
-
+ 
 // Firebase integration
 
 import { AngularFireModule } from 'angularfire2';
@@ -51,15 +51,16 @@ firebase.initializeApp(firebaseConfig);
     AppComponent,
     RegisterComponent,
     WebviewDirective,
-     
+
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
+     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    ReactiveFormsModule,
     AngularFireAuthModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes),
     TranslateModule.forRoot({
       loader: {

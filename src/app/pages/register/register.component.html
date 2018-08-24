@@ -1,0 +1,57 @@
+<form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)"  >
+
+  <!-- NAME STARTS -->
+  <div class="form-group">
+    <input type="text" [(ngModel)]="name" [formControl]="registerForm.controls['name']" name="name" placeholder="Enter your name" class="form-control">
+    <div *ngIf="registerForm.controls['name'].touched && !registerForm.controls['name'].errors.isValid"> Name is required </div>
+  </div>
+  <!-- NAME ENDS -->
+
+  <!-- SURNAME STARTS -->
+  <div class="form-group">
+    <input type="text" [(ngModel)]="surname" formControlName="surname" name="text" placeholder="Enter your surname" class="form-control">
+    <div *ngIf="registerForm.controls['surname'].touched && !registerForm.controls['surname'].errors.isValid"> Surname is required </div>
+
+  </div>
+  <!-- SURNAME ENDS -->
+
+  <!-- MAIL STARTS -->
+  <div class="form-group">
+    <input type="text" [(ngModel)]="mail" formControlName="mail" name="mail" placeholder="Enter your mail" class="form-control">
+    <div *ngIf="registerForm.controls['mail'].touched && !registerForm.controls['mail'].errors.isValid"> Email is required </div>
+    <div *ngIf="registerForm.controls['mail'].touched && !registerForm.controls['mail'].errors.isEmail"> Email is not valid type </div>
+
+  </div>
+  <!-- MAIL ENDS -->
+
+  <!-- USERNAME STARTS -->
+  <div class="form-group">
+    <input type="text" [(ngModel)]="username" formControlName="username" maxlength="40" name="text" placeholder="username" class="form-control">
+    <div *ngIf="registerForm.controls['username'].touched && !registerForm.controls['username'].errors.isValid"> Username is required </div>
+    <div *ngIf="registerForm.controls['username'].touched && !registerForm.controls['username'].errors.minLength"> Username should be at least 6 characters </div>
+    
+  </div>
+  <!-- USERNAME ENDS -->
+
+  <!-- PASSWORD STARTS -->
+  <div class="form-group">
+    <input type="password" [(ngModel)]="password" formControlName="password" placeholder="*****" class="form-control">
+    <div *ngIf="registerForm.controls['password'].touched && !registerForm.controls['password'].errors.isValid"> Password is required </div>
+    <div *ngIf="registerForm.controls['password'].touched && !registerForm.controls['password'].errors.minLength"> Password should be at least 6 characters</div>
+    <div *ngIf="registerForm.controls['password'].touched && !registerForm.controls['password'].errors.upperCase"> Password should have a upper character</div>
+    <div *ngIf="registerForm.controls['password'].touched && !registerForm.controls['password'].errors.hasNumber"> Password should have a number</div>
+
+  </div>
+  <!-- PASSWORD ENDS -->
+
+  <!-- CONFIRM PASSWORD STARTS -->
+  <div class="form-group">
+    <input type="password" [(ngModel)]="confirmPassword" (change)="passwordEquation()" formControlName="confirmPassword"  class="form-control">
+    <div *ngIf="registerForm.controls['confirmPassword'].touched && !registerForm.controls['confirmPassword'].errors.isValid"> Please enter your password again. </div>
+    <div *ngIf="registerForm.controls['confirmPassword'].touched && !passwordEquation()"> Please check your password </div>
+
+  </div>
+  <!-- CONFIRM PASSWORD ENDS -->
+  <button   type="submit" class="btn">Register</button>
+
+</form>
