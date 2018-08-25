@@ -1,12 +1,15 @@
 <form>
-  <div>
-    <label>Select a video</label>
+  <div id="video-area">
+    <p>Drag your files here or click to select</p>
     <input type="file" accept="video/*" />
   </div>
- 
-  <div>
-    <label>Select a subtitle</label>
-    <input type="file"  />
+  <br>
+  <br>
+  <br>
+
+  <div id="subtitle-area">
+    <p>Drag your files here or click to select</p>
+    <input type="file"/>
   </div>
   <a  routerLinkActive="active"><button (click)=" submit() " type="submit">Go to the player</button></a>
  </form>

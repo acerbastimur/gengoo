@@ -13,7 +13,7 @@ export class GoogleService {
 const url = 'https://translation.googleapis.com/language/translate/v2?key=';
 
 export class GoogleObj {
-  text: string;
+  q: string = 'translate';
   readonly source: string = 'en';
   readonly target: string = 'tr';
   readonly format: string = 'text';
