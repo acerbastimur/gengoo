@@ -1,0 +1,17 @@
+<form autocomplete="off" (ngSubmit)="login()" >
+  <!-- MAIL STARTS -->
+  <div class="form-group">
+    <input type="text" [(ngModel)]="user.email" name="mail" placeholder="Enter your mail" class="form-control" [ngModelOptions]="{standalone: true}">
+  </div>
+  <!-- MAIL ENDS -->
+
+
+  <!-- PASSWORD STARTS -->
+  <div class="form-group">
+    <input type="password" [(ngModel)]="user.password" name="password" placeholder="*****" class="form-control" [ngModelOptions]="{standalone: true}">
+  </div>
+  <!-- PASSWORD ENDS -->
+
+  <button type="submit" class="btn">Register</button>
+
+</form>
