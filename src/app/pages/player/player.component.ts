@@ -63,6 +63,7 @@ export class PlayerComponent implements OnInit {
   
     document.addEventListener('drop',function(event){
       event.preventDefault();
+      console.log('dragged!');
       return false;
     },false);
     //////////////////////////////////////////////////////
