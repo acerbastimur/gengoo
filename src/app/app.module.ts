@@ -27,6 +27,9 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import { RegisterComponent } from './pages/register/register.component';
+import { PlayerComponent } from './pages/player/player.component';
+import { ChooseVideoComponent } from './pages/choose-video/choose-video.component';
+import { GoogleService } from './providers/google.services';
  
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -51,6 +54,8 @@ firebase.initializeApp(firebaseConfig);
     AppComponent,
     RegisterComponent,
     WebviewDirective,
+    PlayerComponent,
+    ChooseVideoComponent,
 
   ],
   imports: [
@@ -59,7 +64,7 @@ firebase.initializeApp(firebaseConfig);
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    AngularFireAuthModule,
+     AngularFireAuthModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     TranslateModule.forRoot({
@@ -70,7 +75,7 @@ firebase.initializeApp(firebaseConfig);
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [ElectronService,GoogleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

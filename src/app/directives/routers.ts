@@ -1,9 +1,14 @@
-import {  Routes } from '@angular/router';
+import { PlayerComponent } from './../pages/player/player.component';
+import { Routes } from '@angular/router';
 import { RegisterComponent } from '../pages/register/register.component';
+import { ChooseVideoComponent } from '../pages/choose-video/choose-video.component';
 
 
 // Declare your routes here
 export const appRoutes: Routes = [
+    { path: 'player', component: PlayerComponent },
+    { path: 'choosevideo', component: ChooseVideoComponent },
+    { path: 'player/:videoPath', component: PlayerComponent },
     { path: '', redirectTo: 'register', pathMatch: 'full' },
-    { path: 'register', component: RegisterComponent}
- ];
+    { path: 'register', component: RegisterComponent }
+];

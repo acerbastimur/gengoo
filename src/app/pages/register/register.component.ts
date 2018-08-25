@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,9 +16,11 @@ export class RegisterComponent implements OnInit {
   public username: string;
   public confirmPassword: string;
   public password: string;
-
+  public terms;
   public registerForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AngularFireAuth) {
 
     this.registerForm = fb.group({
       'name': ['', Validators.compose([isValid])],
@@ -41,15 +46,55 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  async signUp() {
+    // Control varibles
+    const terms = document.getElementById('terms') as HTMLInputElement;
+    const inputValues = this.registerForm;
+    const validName = inputValues.controls.name.errors.isValid;
+    const validSurname = inputValues.controls.surname.errors.isValid;
+    const isItEmail = inputValues.controls.mail.errors.isEmail;
+    const validUsername = inputValues.controls.username.errors.isValid;
+    const lengthUsername = inputValues.controls.username.errors.minLength;
+    const hasNumberPassword = inputValues.controls.password.errors.hasNumber;
+    const validPassword = inputValues.controls.password.errors.isValid;
+    const lenghtPassword = inputValues.controls.password.errors.minLength;
+    const upperCasePassword = inputValues.controls.password.errors.upperCase;
+
+
+
+
+    if (validName && validSurname && isItEmail && validUsername && lenghtPassword &&
+      lengthUsername && hasNumberPassword && validPassword && upperCasePassword && terms.checked) {
+      const email = this.registerForm.value.mail;
+      const password = this.registerForm.value.password;
+
+      await this.authService.auth.createUserWithEmailAndPassword(email, password).then(() => {
+        firebase.auth().onAuthStateChanged((userData) => {
+          if (userData) {
+            console.log('USER DATA IS ', userData);
+
+            this.authService.authState.subscribe((activeUser: firebase.User) => {
+              console.log('UID IS ', activeUser.uid);
+              console.log('ACTIVE USER IS', activeUser);
+
+            });
+          }
+        });
+      });
+    }
+
+
+  }
+
+
+
+  // Check if password and confirm password are equal
   passwordEquation(): boolean {
-    console.log('entered');
-    
-    if(this.password === this.confirmPassword) {
-      console.log('true');
+
+    if (this.password === this.confirmPassword && this.confirmPassword !== '') {
 
       return true;
     } else {
-      console.log('false');
 
       return false;
     }
@@ -81,18 +126,12 @@ function hasUpperCase(control: FormControl): { [s: string]: boolean } {
     'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   let flag = true;
   for (const char of uppercase) {
-    console.log(char);
 
     if (control.value.match(char)) {
-
-
       flag = false;
-      console.log(control);
       return { upperCase: true };
     }
   }
-  console.log(control);
-
   if (flag) {
     return { upperCase: false };
   }
@@ -117,24 +156,9 @@ function hasNumber(control: FormControl): { [s: string]: boolean } {
 
 // Check if it is a valid email
 function isEmail(control: FormControl): { [s: string]: boolean } {
-  console.log(control);
-
   const isValid = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(control.value);
-  if (control.value.length > 0 && !isValid) {
+  if (!isValid) {
     return { isEmail: false };
   } else { return { isEmail: true }; }
 }
 
-// Check all the flags if whether they are usable
-
-function canRegister(form: FormControl): { [s: string]: boolean } {
-  let flag = false;
-  console.log(form);
-
-  let flag1, flag2, flag3, flag4, flag5, flag6;
-
-  if (true) {
-    flag = true;
-  }
-  return { flag };
-}
