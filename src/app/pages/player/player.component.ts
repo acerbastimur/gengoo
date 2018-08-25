@@ -61,7 +61,7 @@ export class PlayerComponent implements OnInit {
       return false;
     },false);
   
-    document.addEventListener('drop',function(event){
+    document.addEventListener('drop', function(event){
       event.preventDefault();
       console.log('dragged!');
       return false;
@@ -75,6 +75,7 @@ export class PlayerComponent implements OnInit {
        $('.word').on('click', (e) => { // İf clicked 
        const x = e.currentTarget.outerText; // Get it's text
           this.translate(x); // Call translate
+          return; // BECAUSE, UNLESS RETURN IT SHOWS 2 TIMES 
        });
       return;
    } else {
@@ -84,7 +85,7 @@ export class PlayerComponent implements OnInit {
  ////////////////////////////////////////////////////////////
  ///////////// Translate ///////////////
  translate(text) {
-  this.googleObj.text = text; // Set text that will translate
+  this.googleObj.q = text; // Set text that will translate
   // Call google translate function 
   this._google.translate(this.googleObj, 'AIzaSyCS8Ajivy0OSI4FjZq4c_qaH6m82nosqvo').subscribe(
     (response: any) => {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -16,11 +17,11 @@ export class RegisterComponent implements OnInit {
   public username: string;
   public confirmPassword: string;
   public password: string;
-  public terms;
   public registerForm: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private authService: AngularFireAuth) {
+    private authService: AngularFireAuth,
+    private router: Router  ) {
 
     this.registerForm = fb.group({
       'name': ['', Validators.compose([isValid])],
@@ -48,7 +49,6 @@ export class RegisterComponent implements OnInit {
 
   async signUp() {
     // Control varibles
-    const terms = document.getElementById('terms') as HTMLInputElement;
     const inputValues = this.registerForm;
     const validName = inputValues.controls.name.errors.isValid;
     const validSurname = inputValues.controls.surname.errors.isValid;
@@ -61,10 +61,17 @@ export class RegisterComponent implements OnInit {
     const upperCasePassword = inputValues.controls.password.errors.upperCase;
 
 
+    const userDetails = {
+      name: this.name,
+      surname: this.surname,
+      username: this.username,
+      mail: this.mail,
+      registerDate: Date.now()
 
+    };
 
     if (validName && validSurname && isItEmail && validUsername && lenghtPassword &&
-      lengthUsername && hasNumberPassword && validPassword && upperCasePassword && terms.checked) {
+      lengthUsername && hasNumberPassword && validPassword && upperCasePassword) {
       const email = this.registerForm.value.mail;
       const password = this.registerForm.value.password;
 
@@ -74,13 +81,19 @@ export class RegisterComponent implements OnInit {
             console.log('USER DATA IS ', userData);
 
             this.authService.authState.subscribe((activeUser: firebase.User) => {
-              console.log('UID IS ', activeUser.uid);
-              console.log('ACTIVE USER IS', activeUser);
+              firebase.database().ref('/users/' + activeUser.uid + '/personelDetails').update(userDetails)
+              .then(() => {
+                this.router.navigate(['/choosevideo']);
+
+              });
 
             });
           }
         });
-      });
+      }).catch(error => {
+        console.log('THERE IS AN ERROR : ', error);
+
+      })
     }
 
 
