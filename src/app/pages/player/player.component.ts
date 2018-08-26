@@ -61,7 +61,7 @@ export class PlayerComponent implements OnInit {
       return false;
     },false);
   
-    document.addEventListener('drop',function(event){
+    document.addEventListener('drop', function(event){
       event.preventDefault();
       console.log('dragged!');
       return false;
@@ -77,6 +77,7 @@ export class PlayerComponent implements OnInit {
          
           
           this.translate(x); // Call translate
+          return; // BECAUSE, UNLESS RETURN IT SHOWS 2 TIMES 
        });
       return;
    } else {
