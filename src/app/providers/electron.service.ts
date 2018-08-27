@@ -31,4 +31,21 @@ export class ElectronService {
     return window && window.process && window.process.type;
   }
 
+  exit() {
+       const window = remote.getCurrentWindow();
+      window.close();
+  }
+
+  maximize () {
+    const window = remote.getCurrentWindow();
+    if (!window.isMaximized()) {
+        window.maximize();
+    } else {
+        window.unmaximize();
+    }
+  }
+  minimize () {
+    const window = remote.getCurrentWindow();
+       window.minimize();
+  }
 }

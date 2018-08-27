@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, remote } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -15,12 +15,12 @@ function createWindow() {
   win = new BrowserWindow({
     x: 400,
     y: 150,
-    width: 1500,
-    height: 700,
-    maxWidth: 1500,
-    maxHeight: 700,
-   });
- 
+    minWidth: 1200,
+    minHeight: 600,
+    titleBarStyle: 'hidden',
+    frame: false
+  });
+
   if (serve) {
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)
@@ -32,7 +32,7 @@ function createWindow() {
       protocol: 'file:',
       slashes: true
     }));
-    
+
   }
 
   win.webContents.openDevTools();
@@ -53,9 +53,9 @@ try {
   // Some APIs can only be used after this event occurs.
   app.on('ready', createWindow);
 
-  app.on('browser-window-created',function(e,window) {
+  app.on('browser-window-created', function (e, window) {
     window.setMenu(null);
-    });
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
@@ -78,3 +78,4 @@ try {
   // Catch Error
   // throw e;
 }
+
