@@ -1,69 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~bootstrap/dist/css/bootstrap.css";  
-
-
-html, body {
-  margin: 0;
+html {
   padding: 0;
-  height: 100%;
+  margin:0;
 }
-.titleBar {
-  width: 100%;
-  height: 3vh;
-  background-color: #3591e700;
-}
-
-.dragArea {
-  width: 93.75% ;
-  -webkit-app-region: drag;
-  float: left;
-  height: 3vh;
+@import "~bootstrap/dist/css/bootstrap.css";  
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.buttons {
-  width: 6.25% ;
-  float: right;
-  height: 3vh;
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+  -webkit-animation: fadein 5s linear 1 normal forwards;
 
 }
-#exit {
-  background: linear-gradient(to top, #abbaab, #ffffff);
-  border-radius: 100%;
-  width: 2vh;
-  height: 2vh;
-  float: right;
-  margin-right: 1vw;
-  margin-top: 0.5vh;
+ 
+@-webkit-keyframes fadein{
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-#minimize {
-  background: linear-gradient(to top, #abbaab, #ffffff);
-  border-radius: 100%;
-  width: 2vh;
-  height: 2vh;
-  float: right;
-  margin-right: 0.5vw;
-  margin-top: 0.5vh;
 
-}
-#maximize {
-  background: linear-gradient(to top, #abbaab, #ffffff);
-  border-radius: 100%;
-  width: 2vh;
-  height: 2vh;
-  float: right;
-  margin-right: 0.5vw;
-  margin-top: 0.5vh;
-
-}
-#exit:hover {
-  background: linear-gradient(to top, #d84a1f, #db5c36);
-}
-#minimize:hover {
-   background: linear-gradient(to top, #78d81f, #80d431);
-
-}
-#maximize:hover {
-   background: linear-gradient(to top, #ece80b, #dad728);
-
+@-webkit-keyframes fadeout{
+  from { opacity: 1; }
+  to { opacity: 0; }
 }

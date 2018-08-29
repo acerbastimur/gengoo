@@ -24,7 +24,17 @@ export class ElectronService {
 
       this.childProcess = window.require('child_process');
       this.fs = window.require('fs');
+
+      document.addEventListener('keydown', function (e) {
+        if (e.which === 123) {
+remote.getCurrentWebContents().openDevTools();
+        } else if (e.which === 116) {
+          location.reload();
+        }
+      });
+    
     }
+
   }
 
   isElectron = () => {
@@ -32,20 +42,20 @@ export class ElectronService {
   }
 
   exit() {
-       const window = remote.getCurrentWindow();
-      window.close();
+    const window = remote.getCurrentWindow();
+    window.close();
   }
 
-  maximize () {
+  maximize() {
     const window = remote.getCurrentWindow();
     if (!window.isMaximized()) {
-        window.maximize();
+      window.maximize();
     } else {
-        window.unmaximize();
+      window.unmaximize();
     }
   }
-  minimize () {
+  minimize() {
     const window = remote.getCurrentWindow();
-       window.minimize();
+    window.minimize();
   }
 }
