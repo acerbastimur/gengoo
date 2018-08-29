@@ -10,7 +10,7 @@ export const appRoutes: Routes = [
     { path: 'player', component: PlayerComponent },
     { path: 'choosevideo', component: ChooseVideoComponent },
     { path: 'player/:videoPath', component: PlayerComponent },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', redirectTo: 'register', pathMatch: 'full' },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent }
 ];
