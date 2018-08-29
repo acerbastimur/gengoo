@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-const srt2vtt = require('srt-to-vtt')
-const fs = require('fs')
+/* const srt2vtt = require('srt-to-vtt')
+const fs = require('fs') */
 
 
 @Component({
@@ -43,10 +43,10 @@ export class ChooseVideoComponent implements OnInit {
       this.video.subtitlePath = document.querySelectorAll('input')[1].files[0].path; // Set video path
 
 
-      fs.createReadStream(this.video.subtitlePath) // Convert chosen srt to vtt
+   /*    fs.createReadStream(this.video.subtitlePath) // Convert chosen srt to vtt
         .pipe(srt2vtt())
         .pipe(fs.createWriteStream(this.video.subtitlePath.replace('srt', 'vtt')));
-
+ */
         setTimeout(() => {
                 this.router.navigate(['/player', this.video.videoPath + '+' + this.video.subtitlePath.replace('srt', 'vtt')]);
 
