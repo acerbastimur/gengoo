@@ -10,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChooseVideoComponent implements OnInit {
    video = {
+    videoName: '',
     subtitlePath : '',
+    subtitleName: '',
     videoPath: ''
   }
 
@@ -20,7 +22,7 @@ export class ChooseVideoComponent implements OnInit {
 
   ngOnInit() {
 
-    /////////////////////// Prevent Default //////////////////// 
+    /////////////////////// Prevent Default ////////////////////
     document.addEventListener('dragover',function(event){
       event.preventDefault();
       return false;
@@ -30,11 +32,15 @@ export class ChooseVideoComponent implements OnInit {
       event.preventDefault();
       return false;
     },false);
+
+    document.addEventListener('ondragleave',function(event){
+      event.preventDefault();
+      return false;
+    },false);
     /////////////////////////////////////////////////////////////
     
   ////////////////////// Video Area//////////////////////////////
       var holder = document.getElementById('video-area');
-
       holder.ondragover = () => {
           return false;
       };
@@ -49,9 +55,10 @@ export class ChooseVideoComponent implements OnInit {
 
       holder.ondrop = (e) => {
           e.preventDefault();
-
           let path = e.dataTransfer.files[0].path;
           this.video.videoPath = path;
+          this.video.videoName = e.dataTransfer.files[0].name;
+          document.getElementById('video-area').innerHTML = this.video.videoName;
           return false;
       };
   /////////////////////////////////////////////////////////
@@ -72,9 +79,10 @@ export class ChooseVideoComponent implements OnInit {
 
   holder.ondrop = (e) => {
       e.preventDefault();
-
       let path = e.dataTransfer.files[0].path;
       this.video.subtitlePath = path;
+      this.video.subtitleName = e.dataTransfer.files[0].name;
+      document.getElementById('subtitle-area').innerHTML = this.video.subtitleName;
       return false;
   };
 /////////////////////////////////////////////////////////
@@ -84,6 +92,7 @@ export class ChooseVideoComponent implements OnInit {
   checkSubtitle(){
     try {
       this.video.subtitlePath = document.querySelectorAll('input')[1].files[0].path; // try get the path of video from input
+      this.video.subtitleName = document.querySelectorAll('input')[1].files[0].name;
     }
       catch(err) {        
         return 0
@@ -95,6 +104,8 @@ export class ChooseVideoComponent implements OnInit {
   checkVideo(){
     try {
       this.video.videoPath = document.querySelectorAll('input')[0].files[0].path; // try get the path of video from input
+      this.video.subtitleName = document.querySelectorAll('input')[0].files[0].name;
+
     }
       catch(err) {        
         return 0

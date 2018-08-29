@@ -1,15 +1,108 @@
-#video-area {
-    color:black;
+.header-block{
+    height: 15vh;
+    width: 90vw;
+    margin-top: 5vh;
+    margin-left: 3vw;
     text-align: center;
-    width:300px;
-    height:300px;
-    border-style: dashed;
+    
+}
+.header{
+    margin-top: 5vh;
+    font-family: 'Helvetica Neue';
+    font-size: 7.5vh;
+    font-weight: 100;
+    color: #707070;
 }
 
-#subtitle-area {
-    color:black;
-    text-align: center;
-    width:300px;
-    height:300px;
-    border-style: dashed;
+.main-block{
+    height: 50vh;
+    width: 77vw;
+    margin-top: 5vh;
+    margin-left: 11.5vw;
+}
+.content-block{
+    height: 50vh;
+    width: 20vw;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    border-style: solid;
+    border-color: #707070;
+    border-radius: 3%;
+    border-width: 0.1vw;
+    float: left;
+}
+
+#netflix{
+    background-color: #1D1818;
+}
+
+.netflix-img{
+    align-items: center;
+    margin-top:17.5vh;
+    height: 15vh;
+    width: 20vw;
+
+}
+
+#youtube{
+    background-color: #F4F4F4;
+}
+
+.youtube-svg{
+    height: 15vh;
+    width: 18vw;
+    margin-top:17.5vh;
+    margin-left: 1vw;
+}
+
+.choose-video-block{
+    height: 25vh;
+    width: 20vw;
+    font-family: 'Helvetica Neue';
+    font-size: 3vh;
+    font-weight: 100;
+    color: #707070;
+    text-align: center;   
+}
+
+.choose-video-block:nth-child(1){
+    border-bottom-style: solid;
+    border-width: 0.1vw;
+}
+
+.upload-btn-wrapper {
+    width: 15vw;
+    height: 5.6vh;
+    overflow: hidden;
+    display: inline-block;
+    margin-top: 2vw;
+  }
+  
+.btn {
+border: 0.1vh solid gray;
+color: #707070;
+background-color: white;
+padding: 1vh 1.5vw;;
+border-radius: 3vh;
+font-size: 2vh;
+font-weight: thin;
+}
+
+.upload-btn-wrapper input[type=file] {
+font-size: 2vh;
+left: 0;
+top: 0;
+opacity: 0;
+}
+
+.back-btn-wrapper{
+float: left;
+width: 4vw;
+height: 4vw;
+}
+
+.back{
+width: 4vw;
+height: 4vw;
+
 }
