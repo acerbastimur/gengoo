@@ -30,6 +30,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { PlayerComponent } from './pages/player/player.component';
 import { ChooseVideoComponent } from './pages/choose-video/choose-video.component';
 import { GoogleService } from './providers/google.services';
+import { LoginComponent } from './pages/login/login.component';
+import { EntranceComponent } from './pages/entrance/entrance.component';
  
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -56,6 +58,8 @@ firebase.initializeApp(firebaseConfig);
     WebviewDirective,
     PlayerComponent,
     ChooseVideoComponent,
+    LoginComponent,
+    EntranceComponent,
 
   ],
   imports: [

@@ -18,4 +18,14 @@ export class AppComponent {
     } else {
      }
   }
+
+  exit () {
+    this.electronService.exit();
+  }
+  minimize () {
+    this.electronService.minimize();
+  }
+  maximize() {
+    this.electronService.maximize();
+  }
 }
