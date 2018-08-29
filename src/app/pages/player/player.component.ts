@@ -74,6 +74,8 @@ export class PlayerComponent implements OnInit {
     if ($('.word').is(':visible')) { // Check if words are visible
        $('.word').on('click', (e) => { // İf clicked 
        const x = e.currentTarget.outerText; // Get it's text
+         
+          
           this.translate(x); // Call translate
           return; // BECAUSE, UNLESS RETURN IT SHOWS 2 TIMES 
        });
@@ -95,6 +97,7 @@ export class PlayerComponent implements OnInit {
     },
     err => {
       console.log(err);
+      
     }
   );
 }
