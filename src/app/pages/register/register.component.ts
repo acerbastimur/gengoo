@@ -83,7 +83,7 @@ export class RegisterComponent implements OnInit {
             this.authService.authState.subscribe((activeUser: firebase.User) => {
               firebase.database().ref('/users/' + activeUser.uid + '/personelDetails').update(userDetails)
               .then(() => {
-                this.router.navigate(['/choosevideo']);
+                this.router.navigate(['/enterance']);
 
               });
 

@@ -31,8 +31,9 @@ import { PlayerComponent } from './pages/player/player.component';
 import { ChooseVideoComponent } from './pages/choose-video/choose-video.component';
 import { GoogleService } from './providers/google.services';
 import { LoginComponent } from './pages/login/login.component';
-import { EntranceComponent } from './pages/entrance/entrance.component';
- 
+ import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { EnteranceComponent } from './pages/enterance/enterance.component';
+   
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -59,8 +60,9 @@ firebase.initializeApp(firebaseConfig);
     PlayerComponent,
     ChooseVideoComponent,
     LoginComponent,
-    EntranceComponent,
-
+     ResetPasswordComponent,
+     EnteranceComponent,
+  
   ],
   imports: [
     BrowserModule,
