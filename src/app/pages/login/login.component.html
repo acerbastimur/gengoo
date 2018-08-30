@@ -1,23 +1,31 @@
+ <body class="text-center row justify-content-md-center">
+  <div class="col-md-auto card">
+    <form class="form-signin" autocomplete="off" (ngSubmit)="login()">
+        <div class="row justify-content-md-center">
+            <img class="col-md-auto" height="200" src="../assets/gengoo.png"/>
+        </div>
+        <div class="row ">
+          <div class="col"></div>
+          <img class="col" style="float: left; height: 65px; width: 40px;" src="../assets/facebook.png"/>
+          <img class="col" style="float: left; height: 65px; width: 40px;" src="../assets/google-plus.png"/>
+          <div class="col"></div>
+        </div>
+      <div class="row justify-content-md-center">
+        <p class="col-md-auto" style="text-align: center; margin-top: 20px; font-family: 'Work Sans', sans-serif;
+        font-weight: 300; color: #707070;">sign in with facebook or google</p>
+      </div>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Mail or Username" [(ngModel)]="user.email" name="mail" placeholder="Email address" class="form-control" [ngModelOptions]="{standalone: true}" autofocus>
+      <input type="password" id="inputPassword" [(ngModel)]="user.password" name="password" class="form-control" [ngModelOptions]="{standalone: true}"  placeholder="********"  >
+      <div class="row justify-content-md-center">
+         <button class="btn btn-lg btn-primary btn-block signin" type="submit">Sign in</button>
 
-  <form autocomplete="off" (ngSubmit)="login()" class="form-register">
-    <!-- MAIL STARTS -->
-    <div class="form-group">
-       <input type="text" id="inputEmail" [(ngModel)]="user.email" name="mail" placeholder="Email address" class="form-control" [ngModelOptions]="{standalone: true}"
-        autofocus>
-    </div>
-    <!-- MAIL ENDS -->
-
-
-    <!-- PASSWORD STARTS -->
-    <div class="form-group">
-       <input type="password" id="inputPassword" [(ngModel)]="user.password" name="password" placeholder="*****" class="form-control" [ngModelOptions]="{standalone: true}">
-    </div>
-    <!-- PASSWORD ENDS -->
-
-
-
-    <button class="btn btn-lg btn-primary btn-block signin" type="submit">Sign in</button>
-
-  </form>
-
-<!-- <div  routerLink="/choosevideo">VİDEO SEÇ</div> -->
+      </div>
+      <div class="bottomOfLogin">
+        <p style="margin-top: 20px;">forget your password, Just<a class="otherSelection" routerLink="/reset-password">&nbsp;click!</a></p>
+      </div>
+      <div class="bottomOfLogin">
+          <p>Don't you a member.<a class="otherSelection"  routerLink="/register">&nbsp;Register!</a></p>
+      </div>
+    </form>
+  </div>
+</body>
