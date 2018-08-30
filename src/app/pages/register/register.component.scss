@@ -1,19 +1,12 @@
- 
-
-body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-top: 4vw;
-  padding-bottom: 4vw;
-  background-color: #f5f5f5;
- }
+p.topTitle {
+  font-size: 40px;
+}
 
 .form-register {
   width: 100%;
-  max-width: 20vw;
-   margin: auto;
+  max-width: 450px;
+  margin: auto;
+  margin-top: 35px;
 }
 
 .form-register .checkbox {
@@ -32,47 +25,96 @@ body {
   z-index: 2;
 }
 
-.form-register input {
-  margin-bottom: 0.5vw;
-  border-radius: 1vw;
-  border-radius: 1vw;
+.form-register input[type="text"] {
+  margin-bottom: 25px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 17px;
+  border: none;
+  padding: 25px;
+  box-shadow: 0 2px 0px 0px rgba(128, 128, 128, 0.377);
+  color: #2c2b2b;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
 }
 
-.register {
-  border-radius: 2vw;
-  background-color: orangered;
+.form-register input[type="email"] {
+  margin-bottom: 25px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 17px;
+  border: none;
+  padding: 25px;
+  box-shadow: 0 2px 0px 0px rgba(128, 128, 128, 0.377);
+  color: #2c2b2b;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
 }
 
-.terms {
-  float: left;
-  font-size: 1vw;
+.form-register input[type="password"] {
+  margin-bottom: 25px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 17px;
+  border: none;
+  padding: 25px;
+  box-shadow: 0 2px 0px 0px rgba(128, 128, 128, 0.377);
+  color: #2c2b2b;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
 }
 
-.text {
-  font-weight: 200;
-  font-size: 4vw;
+a.register {
+  border-radius: 100px;
+  text-decoration-line: none;
   text-align: center;
-  
+  display: block;
+  width: 150px;
+  padding: 10px;
+  background-color: #F7584A;
+  color: #FAF7F7;
+  box-shadow: 0 2px 0px 0px rgba(182, 5, 5, 0.377);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+}
+
+a.register:hover {
+  text-decoration-line: none;
+  background-color: rgb(253, 110, 97);
 }
 
 .card {
-  border-radius: 2vw;
-  padding: 2vw;
-  width: 30vw;
-  margin-left: 35vw;
-  margin-right: 35vw;
-  background: #cdeb8e;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #cdeb8e 0%, #a5c956 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #cdeb8e 0%, #a5c956 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #cdeb8e 0%, #a5c956 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956', GradientType=0);
-  /* IE6-9 */
+  margin-top: 5vh;
+  border-radius: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  width: 450px;
+  background: linear-gradient(to left top, rgb(212, 194, 253), rgb(227, 247, 255));
+  box-shadow: 0 5px 0 0 rgba(128, 128, 128, 0.274);
+  border: none;
 }
 
-.errorText {
-    font-size: 1vw;
+a.otherSelection {
+  text-decoration-line: none;
+  color: #638CD9;
+  font-weight: 400;
+}
+.topOfRegister label {
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  color: #707070;
+  font-size: 16px;
+}
+.bottomOfRegister p {
+  margin-top: 25px;
+  float: left;
+  text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  color: #707070;
+  width: 100%;
+  font-size: 16px;
 }
