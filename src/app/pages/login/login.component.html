@@ -28,4 +28,17 @@
       </div>
     </form>
   </div>
+  <div id="popup1" class="overlay">
+    <div class="popup">
+      <h2>Failed to Register</h2>
+      <a class="close">×</a>
+      <div class="content">
+        Please check all the input fields
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="spinner_show" >
+    <img src="../assets/spinner.svg" />
+  </div>
 </body>

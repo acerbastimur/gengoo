@@ -10,7 +10,7 @@ import { HomeComponent } from '../pages/home/home.component';
 
 // Declare your routes here
 export const appRoutes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'register', pathMatch: 'full' },
     { path: 'player', component: PlayerComponent },
     { path: 'choose-video', component: ChooseVideoComponent },
     { path: 'player/:videoPath', component: PlayerComponent },

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,10 +18,11 @@ export class RegisterComponent implements OnInit {
   public confirmPassword: string;
   public password: string;
   public registerForm: FormGroup;
+  spinner_show = false;
   constructor(
     private fb: FormBuilder,
     private authService: AngularFireAuth,
-    private router: Router  ) {
+    private router: Router) {
 
     this.registerForm = fb.group({
       'name': ['', Validators.compose([isValid])],
@@ -74,7 +75,7 @@ export class RegisterComponent implements OnInit {
       lengthUsername && hasNumberPassword && validPassword && upperCasePassword) {
       const email = this.registerForm.value.mail;
       const password = this.registerForm.value.password;
-
+        this.spinner_show = true;
       await this.authService.auth.createUserWithEmailAndPassword(email, password).then(() => {
         firebase.auth().onAuthStateChanged((userData) => {
           if (userData) {
@@ -82,18 +83,35 @@ export class RegisterComponent implements OnInit {
 
             this.authService.authState.subscribe((activeUser: firebase.User) => {
               firebase.database().ref('/users/' + activeUser.uid + '/personelDetails').update(userDetails)
-              .then(() => {
-                this.router.navigate(['/enterance']);
+                .then(() => {
+                  this.spinner_show = false;
 
-              });
+                  this.router.navigate(['/enterance']);
+
+                });
 
             });
           }
         });
       }).catch(error => {
         console.log('THERE IS AN ERROR : ', error);
+        this.spinner_show = false;
 
-      })
+
+      });
+    } else {
+      $(function () {
+
+        $('#popup1').css("visibility", "visible");
+        $('#popup1').css("opacity", 1);
+
+      });
+
+      $(".close").click(function () {
+
+        $('#popup1').css("visibility", "hidden");
+        $('#popup1').css("opacity", 0);
+      });
     }
 
 
