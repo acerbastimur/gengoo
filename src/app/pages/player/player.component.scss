@@ -32,5 +32,12 @@ a.tooltips {
     margin-left: -76px;
     z-index: 999;
   }
-
-  
+.chooseTrans {
+  padding: 10px;
+  background-color: red;
+  color: white;
+  position: absolute;
+  z-index: 2;
+  border-radius: 100px;
+  display: none;
+}
