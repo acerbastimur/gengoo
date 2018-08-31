@@ -1,5 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+const srt2vtt = require('srt-to-vtt');
+const fs = require('fs');
+
 
 
 
@@ -14,7 +17,7 @@ export class ChooseVideoComponent implements OnInit {
     subtitlePath: '',
     subtitleName: '',
     videoPath: ''
-  }
+  };
 
   constructor(private router: Router) {
 
@@ -40,22 +43,22 @@ export class ChooseVideoComponent implements OnInit {
     /////////////////////////////////////////////////////////////
 
     ////////////////////// Video Area//////////////////////////////
-    var holder = document.getElementById('video-area');
-    holder.ondragover = () => {
+    const videoArea = document.getElementById('video-area');
+    videoArea.ondragover = () => {
       return false;
     };
 
-    holder.ondragleave = () => {
+    videoArea.ondragleave = () => {
       return false;
     };
 
-    holder.ondragend = () => {
+    videoArea.ondragend = () => {
       return false;
     };
 
-    holder.ondrop = (e) => {
+    videoArea.ondrop = (e) => {
       e.preventDefault();
-      let path = e.dataTransfer.files[0].path;
+      const path = e.dataTransfer.files[0].path;
       this.video.videoPath = path;
       this.video.videoName = e.dataTransfer.files[0].name;
       document.getElementById('video-area').innerHTML = this.video.videoName;
@@ -63,23 +66,23 @@ export class ChooseVideoComponent implements OnInit {
     };
     /////////////////////////////////////////////////////////
     /////////////// Subtitle Area ////////////////////////////
-    var holder = document.getElementById('subtitle-area');
+    const subtitleArea = document.getElementById('subtitle-area');
 
-    holder.ondragover = () => {
+    subtitleArea.ondragover = () => {
       return false;
     };
 
-    holder.ondragleave = () => {
+    subtitleArea.ondragleave = () => {
       return false;
     };
 
-    holder.ondragend = () => {
+    subtitleArea.ondragend = () => {
       return false;
     };
 
-    holder.ondrop = (e) => {
+    subtitleArea.ondrop = (e) => {
       e.preventDefault();
-      let path = e.dataTransfer.files[0].path;
+      const path = e.dataTransfer.files[0].path;
       this.video.subtitlePath = path;
       this.video.subtitleName = e.dataTransfer.files[0].name;
       document.getElementById('subtitle-area').innerHTML = this.video.subtitleName;
@@ -91,7 +94,7 @@ export class ChooseVideoComponent implements OnInit {
   ///////////////////// Check Subtitle ////////////////////
   checkSubtitle() {
     try {
-      this.video.subtitlePath = document.querySelectorAll('input')[1].files[0].path; // try get the path of video from input
+      this.video.subtitlePath = document.querySelectorAll('input')[1].files[0].path; // try get the path of subtitle from input
       this.video.subtitleName = document.querySelectorAll('input')[1].files[0].name;
     } catch (err) {
       return 0;
@@ -104,35 +107,43 @@ export class ChooseVideoComponent implements OnInit {
     try {
       this.video.videoPath = document.querySelectorAll('input')[0].files[0].path; // try get the path of video from input
       this.video.subtitleName = document.querySelectorAll('input')[0].files[0].name;
-
-    }
-    catch (err) {
-      return 0
+    } catch (err) {
+      return err;
     }
   }
   //////////////////////////////////////////////////////
 
-  //////////////////////////////// Send Path ///////////////////////////////// 
+  //////////////////////////////// Send Path /////////////////////////////////
   sendPath(videoPath, subtitlePath) {
-    if (videoPath != '' && subtitlePath != '') {
-      this.router.navigate(['/player', videoPath + "+" + subtitlePath])
-    }
-    else if (videoPath == '') {
-      console.log('video path girilmedi')
-    }
-    else if (subtitlePath == '') {
-      console.log('subtitle path girilmedi')
+    if (videoPath !== '' && subtitlePath !== '') {
+      this.router.navigate(['/player', videoPath + '+' + subtitlePath]);
+    } else if (videoPath === '') {
+      console.log('video path girilmedi');
+    } else if (subtitlePath === '') {
+      console.log('subtitle path girilmedi');
     }
   }
   ////////////////////////////////////////////////////////////////////////////
 
 
-  //submit
+  // submit
   submit() {
     //////////////////////// Path settings ///////////////////////
+    const subtitlePath = this.video.subtitlePath;
+
     this.checkVideo();
     this.checkSubtitle();
-    this.sendPath(this.video.videoPath, this.video.subtitlePath);
+    const newSubtitlePath = subtitlePath.split('.srt')[0] + '.vtt';
+    this.convertSubtitle(subtitlePath, newSubtitlePath);
+    this.sendPath(this.video.videoPath, newSubtitlePath);
     //////////////////////////////////////////////////////////////
   }
+
+  convertSubtitle(srtPath, vttPath) {
+    fs.createReadStream(srtPath)
+    .pipe(srt2vtt())
+    .pipe(fs.createWriteStream(vttPath));
+    setTimeout( () => this.convertSubtitle(srtPath, vttPath) , 3500);
+}
+
 }

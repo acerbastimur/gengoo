@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
       })
       .then(() => {
-        this.router.navigate(['/choosevideo']);
+        this.router.navigate(['/choose-video']);
 
       })
       .catch(error => {

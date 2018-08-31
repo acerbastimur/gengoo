@@ -21,7 +21,7 @@ export class PlayerComponent implements OnInit {
 
   currentSubtitle;
   subtitlePath;
-  videoPath;  
+  videoPath;
   constructor( private route: ActivatedRoute , private _google: GoogleService) { }
 
   ngOnInit() {
@@ -41,43 +41,42 @@ export class PlayerComponent implements OnInit {
     }, 1000);
 
     ///////////////// Get Paths ////////////////////
-    let paths = String(this.route.snapshot.paramMap.get('videoPath')); // Get paths from route url
-    let videoPath = paths.split('+')[0]; // Get video path
-    let subtitlePath = paths.split('+')[1]; // Get subtitle path
+    const paths = String(this.route.snapshot.paramMap.get('videoPath')); // Get paths from route url
+    const videoPath = paths.split('+')[0]; // Get video path
+    const subtitlePath = paths.split('+')[1]; // Get subtitle path
     ////////////////////////////////////////////////
-    
+
     // Set video and subtitle path
     this.videoPath = videoPath;
     this.subtitlePath = subtitlePath;
     //////////////////////////////////
 
     // Start video
-    this.play()
+    this.play();
     //////////////
 
     //////////////// Prevent Default ////////////////////
-    document.addEventListener('dragover',function(event){
+    document.addEventListener('dragover', function(event) {
       event.preventDefault();
       return false;
-    },false);
-  
-    document.addEventListener('drop', function(event){
+    }, false);
+
+    document.addEventListener('drop', function(event) {
       event.preventDefault();
       console.log('dragged!');
       return false;
-    },false);
+    }, false);
     //////////////////////////////////////////////////////
-    
+
   }
   //////////////////// Get clicked word //////////////////
   checkContainer() {
     if ($('.word').is(':visible')) { // Check if words are visible
-       $('.word').on('click', (e) => { // İf clicked 
+       $('.word').on('click', (e) => { // İf clicked
        const x = e.currentTarget.outerText; // Get it's text
-         
-          
+
           this.translate(x); // Call translate
-          return; // BECAUSE, UNLESS RETURN IT SHOWS 2 TIMES 
+          return; // BECAUSE, UNLESS RETURN IT SHOWS 2 TIMES
        });
       return;
    } else {
@@ -88,39 +87,36 @@ export class PlayerComponent implements OnInit {
  ///////////// Translate ///////////////
  translate(text) {
   this.googleObj.q = text; // Set text that will translate
-  // Call google translate function 
+  // Call google translate function
   this._google.translate(this.googleObj, 'AIzaSyCS8Ajivy0OSI4FjZq4c_qaH6m82nosqvo').subscribe(
     (response: any) => {
       console.log(response.data.translations[0].translatedText);
       console.log(response);
-      
+
     },
     err => {
       console.log(err);
-      
+
     }
   );
 }
 /////////////////////////////////////////
-  play() 
-    {
-      // Set video's paths 
+  play() {
+      // Set video's paths
       $('#sourceVideo').attr('src', this.videoPath);
       $('#subtitles').attr('src', this.subtitlePath);
       ////////////////////////////////////////////////
-  
+
       // Player Configuration (all of theese are default)
       const player = new Plyr('#video', {
         controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings',
           'pip', 'airplay', 'fullscreen'
         ],
-        settings :[
+        settings : [
           'captions', 'quality', 'speed', 'loop']
       });
       ///////////////////////////////////////////////////
-  
-  
-  
+
     }
 
 }

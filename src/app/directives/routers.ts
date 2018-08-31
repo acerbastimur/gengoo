@@ -11,7 +11,7 @@ import { EnteranceComponent } from '../pages/enterance/enterance.component';
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'player', component: PlayerComponent },
-    { path: 'choosevideo', component: ChooseVideoComponent },
+    { path: 'choose-video', component: ChooseVideoComponent },
     { path: 'player/:videoPath', component: PlayerComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'enterance', component: EnteranceComponent },
