@@ -17,7 +17,7 @@ export class PlayerComponent implements OnInit {
   currentSubtitle;
   subtitlePath;
   videoPath;
-  constructor(private route: ActivatedRoute, private _google: GoogleService) {}
+  constructor( private route: ActivatedRoute , private _google: GoogleService) { }
 
   ngOnInit() {
     setInterval(() => {
@@ -36,9 +36,9 @@ export class PlayerComponent implements OnInit {
     }, 1000);
 
     ///////////////// Get Paths ////////////////////
-    let paths = String(this.route.snapshot.paramMap.get("videoPath")); // Get paths from route url
-    let videoPath = paths.split("+")[0]; // Get video path
-    let subtitlePath = paths.split("+")[1]; // Get subtitle path
+    const paths = String(this.route.snapshot.paramMap.get('videoPath')); // Get paths from route url
+    const videoPath = paths.split('+')[0]; // Get video path
+    const subtitlePath = paths.split('+')[1]; // Get subtitle path
     ////////////////////////////////////////////////
 
     // Set video and subtitle path
