@@ -1,108 +1,69 @@
-.header-block{
-    height: 15vh;
-    width: 90vw;
-    margin-top: 5vh;
-    margin-left: 3vw;
+.text {
     text-align: center;
-    
-}
-.header{
-    margin-top: 5vh;
-    font-family: 'Helvetica Neue';
-    font-size: 7.5vh;
+    font-size: 4vw;
     font-weight: 100;
-    color: #707070;
+    margin-top:5vw;
 }
 
-.main-block{
-    height: 50vh;
-    width: 77vw;
-    margin-top: 5vh;
-    margin-left: 11.5vw;
+.buttons {
+    margin-top: 4vw;
 }
-.content-block{
-    height: 50vh;
-    width: 20vw;
-    margin-left: 2.5vw;
-    margin-right: 2.5vw;
-    border-style: solid;
-    border-color: #707070;
-    border-radius: 3%;
-    border-width: 0.1vw;
+.video {
+    width: 28.333vw;
+    height: 70vh;
     float: left;
+    margin-left: 6vw;
+    border: 2px dashed black;
+    border-radius: 10px;
+    text-align: center;
+}
+.content-block {
+    margin-top: 35vh;
 }
 
-#netflix{
-    background-color: #1D1818;
+.thirdParty {
+    width: 28.333vw;
+    height: 70vh;
+    float: left;
+    margin-left: 1.5vw;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
 }
 
-.netflix-img{
-    align-items: center;
-    margin-top:17.5vh;
-    height: 15vh;
-    width: 20vw;
-
+.thirdPartyImg {
+    margin-left: 5vw;
+    margin-top: 25vh;
+    width: 18.333vw;
 }
 
-#youtube{
-    background-color: #F4F4F4;
+.youtube {
+    width: 28.333vw;
+    height: 70vh;
+    float: left;
+    margin-left: 1.5vw;
+    border: none;
+    border-radius: 10px;
+    background-color: #d8d8d8;
 }
 
-.youtube-svg{
-    height: 15vh;
-    width: 18vw;
-    margin-top:17.5vh;
-    margin-left: 1vw;
+.youtubeImg {
+    margin-left: 5vw;
+    margin-top: 25vh;
+    width: 18.333vw;
 }
 
-.choose-video-block{
-    height: 25vh;
-    width: 20vw;
-    font-family: 'Helvetica Neue';
-    font-size: 3vh;
-    font-weight: 100;
-    color: #707070;
-    text-align: center;   
+img.nextBtn {
+    height: 50px;
+    position: absolute;
+    margin-top: 2vh;
+    margin-left: 2vw;
+
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
-.choose-video-block:nth-child(1){
-    border-bottom-style: solid;
-    border-width: 0.1vw;
-}
 
-.upload-btn-wrapper {
-    width: 15vw;
-    height: 5.6vh;
-    overflow: hidden;
-    display: inline-block;
-    margin-top: 2vw;
-  }
-  
-.btn {
-border: 0.1vh solid gray;
-color: #707070;
-background-color: white;
-padding: 1vh 1.5vw;;
-border-radius: 3vh;
-font-size: 2vh;
-font-weight: thin;
-}
-
-.upload-btn-wrapper input[type=file] {
-font-size: 2vh;
-left: 0;
-top: 0;
-opacity: 0;
-}
-
-.back-btn-wrapper{
-float: left;
-width: 4vw;
-height: 4vw;
-}
-
-.back{
-width: 4vw;
-height: 4vw;
-
-}
