@@ -33,7 +33,8 @@ import { GoogleService } from './providers/google.services';
 import { LoginComponent } from './pages/login/login.component';
  import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { EnteranceComponent } from './pages/enterance/enterance.component';
-   
+import { HomeComponent } from './pages/home/home.component';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -62,7 +63,7 @@ firebase.initializeApp(firebaseConfig);
     LoginComponent,
      ResetPasswordComponent,
      EnteranceComponent,
-  
+     HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +82,7 @@ firebase.initializeApp(firebaseConfig);
       }
     })
   ],
-  providers: [ElectronService,GoogleService],
+  providers: [ElectronService, GoogleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
