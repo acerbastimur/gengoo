@@ -1,20 +1,21 @@
 
 
   <!-------------------------- Header ------------------------------>
-  
+
   <div class="header-block">
     <div routerLink="/register" class="back-btn-wrapper">
             <img class="back" src="https://i.hizliresim.com/GDXj2V.png" alt="back">
     </div>
     <p class="header">There are 3 ways to watch & learn.</p>
 </div>
+<!-- <div *ngIf="video.videoPath">ejdojeovjefovrf</div> -->
 <!---------------------------------------------------------------->
 
 <!-------------------------- Content ----------------------------->
 <div class="main-block">
     <!-------------------------- Choose video ----------------------------->
     <div class="content-block" id = "drag-area" >
-        <div class="choose-video-block" id="video-area"> 
+        <div class="choose-video-block" id="video-area">
             <form action="">
                 <p style = "margin-bottom:0vh">Drag your video here</p> <br>
                 <p style = "margin:0 0 0 0">or</p>
@@ -23,10 +24,10 @@
                     <input type="file" accept="video/*" />
                 </div>
             </form>
-        
+
         </div>
 
-        <div class="choose-video-block" id="subtitle-area"> 
+        <div class="choose-video-block" id="subtitle-area">
                 <form action="">
                     <p style = "margin-bottom:0vh">Drag your subtitle here</p> <br>
                     <p style = "margin:0 0 0 0">or</p>
@@ -36,7 +37,7 @@
                         <input type="file" name="myfile" />
                     </div>
                 </form>
-            
+
             </div>
     </div>
     <!--------------------------------------------------------------------->
@@ -54,4 +55,4 @@
 
 
   <a  routerLinkActive="active"><button (click)=" submit() " type="submit">Go to the player</button></a>
- 
+
