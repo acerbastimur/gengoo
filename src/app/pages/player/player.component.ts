@@ -75,6 +75,8 @@ export class PlayerComponent implements OnInit {
        $('.word').on('click', (e) => { // İf clicked 
        const x = e.currentTarget.outerText; // Get it's text
           this.translate(x); // Call translate
+          console.log('E is ',e);
+          
           return; // BECAUSE, UNLESS RETURN IT SHOWS 2 TIMES 
        });
       return;
