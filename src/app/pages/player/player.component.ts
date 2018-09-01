@@ -17,7 +17,7 @@ export class PlayerComponent implements OnInit {
   currentSubtitle;
   subtitlePath;
   videoPath;
-  constructor( private route: ActivatedRoute , private _google: GoogleService) { }
+  constructor(private route: ActivatedRoute, private _google: GoogleService) { }
 
   ngOnInit() {
     setInterval(() => {
@@ -37,6 +37,8 @@ export class PlayerComponent implements OnInit {
 
     ///////////////// Get Paths ////////////////////
     const paths = String(this.route.snapshot.paramMap.get('videoPath')); // Get paths from route url
+    console.log(paths);
+    console.log(this.route.snapshot);
     const videoPath = paths.split('+')[0]; // Get video path
     const subtitlePath = paths.split('+')[1]; // Get subtitle path
     ////////////////////////////////////////////////
@@ -53,7 +55,7 @@ export class PlayerComponent implements OnInit {
     //////////////// Prevent Default ////////////////////
     document.addEventListener(
       "dragover",
-      function(event) {
+      function (event) {
         event.preventDefault();
         return false;
       },
@@ -62,7 +64,7 @@ export class PlayerComponent implements OnInit {
 
     document.addEventListener(
       "drop",
-      function(event) {
+      function (event) {
         event.preventDefault();
         console.log("dragged!");
         return false;
@@ -75,11 +77,11 @@ export class PlayerComponent implements OnInit {
     const transBox = parseInt($('.choosenTrans').css('width')); // the width of the choosenTrans div element
     const wordWidth = e.target.clientWidth; // it is the width of the word which was clicked
     const positionX = e.delegateTarget.offsetLeft; // it is the margin-left of the word which was clicked
-    const totalOrigin = positionX - Math.abs( transBox - wordWidth ) / 2;
+    const totalOrigin = positionX - Math.abs(transBox - wordWidth) / 2;
     $('.chooseTrans').css({
       'margin-left': positionX,
       'margin-top': '-150px',
-      'display' : 'block'
+      'display': 'block'
     }); // this function get coordinated to chooseTrans div element
     $('.chooseTrans').text(translatedText); // this function get to translated word
   }
@@ -91,7 +93,7 @@ export class PlayerComponent implements OnInit {
         // İf clicked
         const x = e.currentTarget.outerText; // Get it's text
 
-        this.translate(x,e); // Call translate
+        this.translate(x, e); // Call translate
         //this.popUp(e);
         console.log("E is ", e);
         return; // BECAUSE, UNLESS RETURN IT SHOWS 2 TIMES
