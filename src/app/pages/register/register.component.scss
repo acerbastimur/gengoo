@@ -64,7 +64,7 @@ p.topTitle {
   font-weight: 300;
 }
 
-a.register {
+button.register {
   border-radius: 100px;
   text-decoration-line: none;
   text-align: center;
@@ -76,9 +76,9 @@ a.register {
   box-shadow: 0 2px 0px 0px rgba(182, 5, 5, 0.377);
   font-family: 'Work Sans', sans-serif;
   font-weight: 400;
+  border: none;
 }
-
-a.register:hover {
+button.register:hover {
   text-decoration-line: none;
   background-color: rgb(253, 110, 97);
 }
