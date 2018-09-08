@@ -1,58 +1,45 @@
-
-
-  <!-------------------------- Header ------------------------------>
-
-  <div class="header-block">
-    <div routerLink="/register" class="back-btn-wrapper">
-            <img class="back" src="https://i.hizliresim.com/GDXj2V.png" alt="back">
+ <div class="body">
+    <div style="position: absolute; width: 100%;">
+      <img class="nextBtn" height="50px" src="../assets/next.png" />
     </div>
-    <p class="header">There are 3 ways to watch & learn.</p>
-</div>
-<!-- <div *ngIf="video.videoPath">ejdojeovjefovrf</div> -->
-<!---------------------------------------------------------------->
-
-<!-------------------------- Content ----------------------------->
-<div class="main-block">
-    <!-------------------------- Choose video ----------------------------->
-    <div class="content-block" id = "drag-area" >
-        <div class="choose-video-block" id="video-area">
+    <p class="text">There are 3 ways to watch & learn</p>
+  
+    <div class="buttons">
+      <div class="video" id="drag-area">
+        <div class="content-block" >
+          <div class="choose-video-block" id="video-area">
             <form action="">
-                <p style = "margin-bottom:0vh">Drag your video here</p> <br>
-                <p style = "margin:0 0 0 0">or</p>
-                    <div class="upload-btn-wrapper">
-                    <button class="btn">Open Document</button>
-                    <input type="file" accept="video/*" />
-                </div>
+              <p>Drag your video here</p><br>
+              <p>or</p>
+              <div class="upload-btn-wrapper">
+                <button class="btn">Select a video</button>
+                <input type="file" name="myfile" />
+              </div>
             </form>
-
+          </div>
+          <div class="popup">
+            popup
+          </div>
         </div>
-
-        <div class="choose-video-block" id="subtitle-area">
-                <form action="">
-                    <p style = "margin-bottom:0vh">Drag your subtitle here</p> <br>
-                    <p style = "margin:0 0 0 0">or</p>
-
-                    <div class="upload-btn-wrapper">
-                        <button class="btn">Open Document</button>
-                        <input type="file" name="myfile" />
-                    </div>
-                </form>
-
-            </div>
+      </div>
+      <div class="thirdParty">
+        <img class="thirdPartyImg" src="../assets/netflix.png" />
+      </div>
+      <div class="youtube">
+        <img class="youtubeImg" src="../assets/youtube.png" />
+      </div>
     </div>
-    <!--------------------------------------------------------------------->
-    <!-------------------------- netflix block ----------------------------->
-    <div class="content-block" id="netflix">
-        <img class="netflix-img" src="https://i.hizliresim.com/Q2GjZG.png" alt="netflix">
+  </div>
+  
+  <div class="popText text-center" id="popup">
+    <div class="choose-video-block" id="subtitle-area">
+      <form action="">
+        <p style="margin-top:8vh">Drag your subtitle here</p> <br>
+        <p>or</p>
+        <div class="upload-btn-wrapper">
+          <button class="btn">Select a subtitle</button>
+          <input type="file" name="myfile" />
+        </div>
+      </form>
     </div>
-    <!--------------------------------------------------------------------->
-    <!-------------------------- youtube block ----------------------------->
-    <div class="content-block" id="youtube">
-        <img class="youtube-svg" src="https://i.hizliresim.com/6NGj53.png" alt="youtube">
-    </div>
-</div>
-<!---------------------------------------------------------------->
-
-
-  <a  routerLinkActive="active"><button (click)=" submit() " type="submit">Go to the player</button></a>
-
+  </div>

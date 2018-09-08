@@ -5,16 +5,19 @@ import { ChooseVideoComponent } from '../pages/choose-video/choose-video.compone
 import { LoginComponent } from '../pages/login/login.component';
 import { ResetPasswordComponent } from '../pages/reset-password/reset-password.component';
 import { EnteranceComponent } from '../pages/enterance/enterance.component';
+import { HomeComponent } from '../pages/home/home.component';
 
 
 // Declare your routes here
 export const appRoutes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', redirectTo: 'register', pathMatch: 'full' },
     { path: 'player', component: PlayerComponent },
     { path: 'choose-video', component: ChooseVideoComponent },
     { path: 'player/:videoPath', component: PlayerComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'enterance', component: EnteranceComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+    { path: 'home', component: HomeComponent },
+
 ];

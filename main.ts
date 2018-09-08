@@ -15,10 +15,11 @@ function createWindow() {
   win = new BrowserWindow({
     x: 400,
     y: 150,
-    minWidth: 1200,
-    minHeight: 600,
-    titleBarStyle: 'hidden',
-    frame: false
+    minWidth: size.width * 6 / 8,
+    minHeight: size.height * 6 / 8,
+    height: size.height * 7 / 8,
+    width: size.width * 7 / 8
+
   });
 
   if (serve) {
@@ -34,7 +35,7 @@ function createWindow() {
     }));
 
   }
- 
+
   win.webContents.openDevTools();
 
   // Emitted when the window is closed.
