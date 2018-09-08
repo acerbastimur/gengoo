@@ -142,7 +142,7 @@ export class ChooseVideoComponent implements OnInit {
     fs.createReadStream(srtPath)
     .pipe(srt2vtt())
     .pipe(fs.createWriteStream(vttPath));
-    setTimeout( () => this.convertSubtitle(srtPath, vttPath) , 3500);
+    setTimeout( () => this.sendPath(srtPath, vttPath) , 3500);
 }
 
 }

@@ -36,6 +36,7 @@ p.topTitle {
   color: #2c2b2b;
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .form-register input[type="email"] {
@@ -49,6 +50,7 @@ p.topTitle {
   color: #2c2b2b;
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .form-register input[type="password"] {
@@ -62,6 +64,7 @@ p.topTitle {
   color: #2c2b2b;
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 button.register {
@@ -117,4 +120,26 @@ a.otherSelection {
   color: #707070;
   width: 100%;
   font-size: 16px;
+}
+.errorText {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  margin-bottom: 5px;
+  color: #2c2b2b;
+  background-color: #f7f7f7;
+  width: 50%;
+  box-shadow: 0 1px 0px 0px rgba(102, 101, 101, 0.377);
+  position: absolute;
+  margin-top: -75px;
+  opacity: 0;
+  display: none;
+}
+.errorLeft {
+  margin-left: 350px;
+}
+.errorRight {
+  margin-left: -210px;
 }

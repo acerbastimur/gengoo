@@ -3,6 +3,9 @@ import { ElectronService } from './providers/electron.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
 import * as $ from 'jquery';
+import TweenMax from 'gsap/TweenMax';
+import Draggable from 'gsap/Draggable';
+declare var TweenMax: any;
 
 @Component({
   selector: 'app-root',
