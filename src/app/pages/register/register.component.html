@@ -5,35 +5,35 @@
 <body class="text-center row justify-content-md-center">
   <div class="col-md-auto card">
     <form class="form-register" [formGroup]="registerForm" autocomplete="off" (ngSubmit)="signUp()">
-      <input type="text" id="input" class="form-control" placeholder="Name" [(ngModel)]="name" [formControl]="registerForm.controls['name']" autofocus>
-      <div *ngIf="registerForm.controls['name'].touched && !registerForm.controls['name'].errors.isValid"  class="errorText"> Name is required</div>
+      <input type="text" id="input" class="form-control formName" placeholder="Name" [(ngModel)]="name" [formControl]="registerForm.controls['name']" (keyup)="errorName()" autofocus>
+      <div class="errorText errorRight errorName"> Name is required</div>
 
 
-      <input type="text" id="input" class="form-control" placeholder="Surname" [(ngModel)]="surname" formControlName="surname" autofocus>
-      <div *ngIf="registerForm.controls['surname'].touched && !registerForm.controls['surname'].errors.isValid" class="errorText" > Surname is required </div>
+      <input type="text" id="input" class="form-control formSName" placeholder="Surname" [(ngModel)]="surname" [formControl]="registerForm.controls['surname']" (keyup)="errorSName()" autofocus>
+      <div class="errorText errorLeft errorSName" > Surname is required </div>
 
 
-      <input type="email" id="input" class="form-control" placeholder="Mail" [(ngModel)]="mail" formControlName="mail" autofocus>
-      <div *ngIf="registerForm.controls['mail'].touched && !registerForm.controls['mail'].errors.isValid" class="errorText"> Email is required</div>
-        <div *ngIf="registerForm.controls['mail'].touched && !registerForm.controls['mail'].errors.isEmail" class="errorText"> Email is not valid type </div>
+      <input type="email" id="input" class="form-control formMail" placeholder="Mail" [(ngModel)]="mail" [formControl]="registerForm.controls['mail']" (keyup)="errorMail()" autofocus>
+      <div class="errorText errorRight errorEmailReq"> Email is required</div>
+        <div class="errorText errorRight errorEmailVal" style="margin-top: -20px"> Email is not valid type </div>
 
 
-      <input type="text" id="input" class="form-control" placeholder="Username" [(ngModel)]="username" formControlName="username" maxlength="40" autofocus>
-      <div *ngIf="registerForm.controls['username'].touched && !registerForm.controls['username'].errors.isValid" class="errorText"> Username is required </div>
-        <div *ngIf="registerForm.controls['username'].touched && !registerForm.controls['username'].errors.minLength" class="errorText"> Username should be at least 6 characters </div>
+      <input type="text" id="input" class="form-control formUName" placeholder="Username" [(ngModel)]="username" [formControl]="registerForm.controls['username']" maxlength="40" (keyup)="errorUName()" autofocus>
+      <div class="errorText errorLeft errorUserReq"> Username is required </div>
+        <div class="errorText errorLeft errorUserLeast" style="margin-top: -20px"> Username should be at least 6 characters </div>
 
-      <input type="password" id="input" class="form-control" placeholder="********" [(ngModel)]="password" formControlName="password" >
-      <div *ngIf="registerForm.controls['password'].touched && !registerForm.controls['password'].errors.isValid"  class="errorText"> Password
+      <input type="password" id="input" class="form-control formPassword" placeholder="********" [(ngModel)]="password" [formControl]="registerForm.controls['password']" (keyup)="errorPassword()" >
+      <div class="errorText errorRight errorPassReq"> Password
         is required </div>
-      <div *ngIf="registerForm.controls['password'].touched && !registerForm.controls['password'].errors.minLength" class="errorText"> Password
+      <div class="errorText errorRight errorPassLeast" style="margin-top: -20px"> Password
         should be at least 6 characters</div>
-      <div *ngIf="registerForm.controls['password'].touched && !registerForm.controls['password'].errors.upperCase" class="errorText"> Password
+      <div class="errorText errorRight errorPassUpper" style="margin-top: 75px"> Password
         should have a upper character</div>
-      <div *ngIf="registerForm.controls['password'].touched && !registerForm.controls['password'].errors.hasNumber" class="errorText"> Password
+      <div class="errorText errorRight errorPassNum" style="margin-top: 150px"> Password
         should have a number</div>
 
-      <input type="password" id="input" class="form-control" placeholder="********" [(ngModel)]="confirmPassword" (change)="passwordEquation()" formControlName="confirmPassword">
-      <div *ngIf="registerForm.controls['confirmPassword'].touched && !passwordEquation()" class="errorText"> Please check your password
+      <input type="password" id="input" class="form-control formPassCheck" placeholder="********" [(ngModel)]="confirmPassword" (keyup)="passwordEquation()" [formControl]="registerForm.controls['confirmPassword']" >
+      <div class="errorText errorLeft errorCheckPass"> Please check your password
       </div>
 
 
@@ -41,7 +41,7 @@
           <input type="checkbox" id="termAndCond"/><label for="termAndCond">I've read the terms and conditions.</label>
       </div>
       <div class="row justify-content-md-center">
-        <button class="register" type="submit">Register</button>
+        <button class="register"  type="submit">Register</button>
       </div>
       <div class="bottomOfRegister">
         <p>Are you already a member? Please,<a class="otherSelection" routerLink="/login">&nbsp;Login</a></p>
